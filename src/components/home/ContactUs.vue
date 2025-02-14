@@ -1,0 +1,120 @@
+<template>
+  <section class="contact-us-section">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <div class="card">
+        <p class="section-description">
+          We would love to hear from you! Please fill out the form below, and we will get
+          back to you as soon as possible.
+        </p>
+        <form @submit.prevent="submitForm" class="contact-form">
+          <input
+            type="text"
+            v-model="name"
+            placeholder="Your Name"
+            required
+            class="form-input"
+          />
+          <input
+            type="email"
+            v-model="email"
+            placeholder="Your Email"
+            required
+            class="form-input"
+          />
+          <textarea
+            v-model="message"
+            placeholder="Your Message"
+            required
+            class="form-textarea"
+          ></textarea>
+          <button type="submit" class="form-button">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script setup>
+import { ref } from "vue";
+
+const name = ref("");
+const email = ref("");
+const message = ref("");
+
+const submitForm = () => {
+  console.log("Form submitted:", {
+    name: name.value,
+    email: email.value,
+    message: message.value,
+  });
+  // Reset the form fields
+  name.value = "";
+  email.value = "";
+  message.value = "";
+};
+</script>
+
+<style scoped>
+.contact-us-section {
+  padding: 40px 20px;
+  background-color: white; /* Set background color to white */
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: white; /* White background for the card */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.section-description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-input,
+.form-textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.form-textarea {
+  height: 100px; /* Set a height for the textarea */
+}
+
+.form-button {
+  background-color: #4caf50; /* Green background for the button */
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+</style>
