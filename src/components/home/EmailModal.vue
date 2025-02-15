@@ -6,8 +6,24 @@
       <p class="modal-description">
         Please enter your email, and we will get back to you.
       </p>
-      <input type="email" v-model="email" placeholder="Your email" class="modal-input" />
-      <button @click="submitEmail" class="modal-button">Submit</button>
+
+      <input
+        type="email"
+        v-model="email"
+        placeholder="Your email"
+        class="modal-input"
+        required
+      />
+      <button @click="submitEmail" class="modal-button bg-green-900">
+        {{ isLoading ? "Sending..." : "Submit" }}
+      </button>
+
+      <p
+        v-if="message"
+        :class="{ 'success-message': success, 'error-message': !success }"
+      >
+        {{ message }}
+      </p>
     </div>
   </div>
 </template>
@@ -15,17 +31,51 @@
 <script setup>
 import { ref } from "vue";
 
-const props = defineProps(["isVisible", "onClose"]);
-const email = ref("");
+const props = defineProps(["isVisible"]);
+const emit = defineEmits(["close"]);
 
-const submitEmail = () => {
-  console.log("Email submitted:", email.value);
-  closeModal();
-};
+const email = ref("");
+const message = ref("");
+const success = ref(false);
+const isLoading = ref(false);
 
 const closeModal = () => {
-  email.value = ""; // Clear the email input
-  props.onClose(); // Emit close event to parent
+  email.value = "";
+  message.value = "";
+  emit("close");
+};
+
+const submitEmail = async () => {
+  if (!email.value) {
+    message.value = "Please enter a valid email.";
+    success.value = false;
+    return;
+  }
+
+  isLoading.value = true;
+
+  try {
+    const response = await fetch("https://formspree.io/f/xpwqyyzq", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email.value }),
+    });
+
+    if (response.ok) {
+      message.value = "Email sent successfully!";
+      success.value = true;
+      email.value = ""; // Clear input field after successful submission
+    } else {
+      message.value = "Failed to send email. Please try again.";
+      success.value = false;
+    }
+  } catch (error) {
+    console.error("Error sending email:", error);
+    message.value = "Network error. Try again later.";
+    success.value = false;
+  }
+
+  isLoading.value = false;
 };
 </script>
 
@@ -36,29 +86,29 @@ const closeModal = () => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Darker overlay for better visibility */
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  backdrop-filter: blur(5px); /* Apply blur effect to the background */
+  backdrop-filter: blur(5px);
 }
 
 .modal-content {
-  background: #f9f9f9; /* Light background for the modal */
+  background: #f9f9f9;
   padding: 20px;
   border-radius: 8px;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-  max-width: 500px; /* Increase the maximum width of the modal */
-  width: 90%; /* Responsive width */
-  position: relative; /* Position relative for absolute positioning of the close button */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
+  position: relative;
 }
 
 .modal-cancel-button {
   background: transparent;
   border: none;
-  color: #d32f2f; /* Softer red color for cancel button */
+  color: #d32f2f;
   font-size: 24px;
   position: absolute;
   top: 10px;
@@ -68,32 +118,31 @@ const closeModal = () => {
 }
 
 .modal-cancel-button:hover {
-  color: #b71c1c; /* Even softer red on hover */
+  color: #b71c1c;
 }
 
 .modal-title {
   font-size: 24px;
   font-weight: bold;
-  color: #333; /* Dark text color */
+  color: #333;
   margin-bottom: 10px;
 }
 
 .modal-description {
   font-size: 16px;
-  color: #666; /* Lighter text color for description */
+  color: #666;
   margin-bottom: 20px;
 }
 
 .modal-input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc; /* Light border */
+  border: 1px solid #ccc;
   border-radius: 4px;
   margin-bottom: 20px;
 }
 
 .modal-button {
-  background-color: #4caf50; /* Green background for submit button */
   color: white;
   padding: 10px 15px;
   border: none;
@@ -103,6 +152,16 @@ const closeModal = () => {
 }
 
 .modal-button:hover {
-  background-color: #45a049; /* Darker green on hover */
+  background-color: #45a049;
+}
+
+.success-message {
+  color: green;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
 }
 </style>

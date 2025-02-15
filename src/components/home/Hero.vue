@@ -20,6 +20,21 @@ export default {
     closeModal() {
       this.isModalVisible = false;
     },
+    scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    },
+  },
+  watch: {
+    isModalVisible(newValue) {
+      if (newValue) {
+        document.body.style.overflow = "hidden"; // Disable scrolling
+      } else {
+        document.body.style.overflow = ""; // Restore scrolling
+      }
+    },
   },
   components: { Icon, EmailModal },
 };
@@ -39,21 +54,29 @@ export default {
             class="w-[120px] md:w-[120px] h-auto"
           />
 
+          <!-- Mobile Invest Button -->
+          <button
+            class="md:hidden bg-green-900 text-white px-4 py-2 rounded-full hover:bg-green-800 transition-all duration-300"
+            @click="showModal"
+          >
+            Invest
+          </button>
+
           <!-- Desktop Menu -->
           <div class="hidden md:flex gap-5 items-center text-black font-extrabold">
             <a
               class="nav-links hover:text-green-800 transition-colors duration-300"
-              href="#about"
+              @click.prevent="scrollToSection('about')"
               >About</a
             >
             <a
               class="nav-links hover:text-green-800 transition-colors duration-300"
-              href="#solutions"
+              @click.prevent="scrollToSection('solutions')"
               >Solutions</a
             >
             <a
               class="nav-links hover:text-green-800 transition-colors duration-300"
-              href="#contact"
+              @click.prevent="scrollToSection('contact')"
               >Contact</a
             >
           </div>
@@ -100,17 +123,26 @@ export default {
           </div>
           <a
             class="py-2 !mt-[10px] font-bold text-3xl leading-relaxed hover:text-green-800 transition-colors duration-300"
-            href="#about"
+            @click.prevent="
+              scrollToSection('about');
+              toggleMenu();
+            "
             >About</a
           >
           <a
             class="py-2 !mt-[10px] font-bold text-3xl leading-relaxed hover:text-green-800 transition-colors duration-300"
-            href="#solutions"
+            @click.prevent="
+              scrollToSection('solutions');
+              toggleMenu();
+            "
             >Solutions</a
           >
           <a
             class="py-2 !mt-[10px] font-bold text-3xl leading-relaxed hover:text-green-800 transition-colors duration-300"
-            href="#contact"
+            @click.prevent="
+              scrollToSection('contact');
+              toggleMenu();
+            "
             >Contact</a
           >
 
@@ -170,11 +202,10 @@ export default {
               <button
                 class="bg-transparent border-[2px] border-gray-100 px-[35px] md:px-[45px] py-[14px] rounded-3xl text-gray-50 w-full sm:w-auto hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
               >
-                <router-link to="/contact" class="text-gray-50 text-lg">
-                  Get Started
-                </router-link>
+                Get Started
               </button>
               <button
+                @click.prevent="scrollToSection('solutions')"
                 class="bg-green-900 border-[2px] border-gray-100 px-[35px] md:px-[45px] py-[14px] rounded-3xl text-gray-50 w-full sm:w-auto hover:bg-green-800 transition-all duration-300 transform hover:scale-105"
               >
                 <span class="text-lg">Our Solutions</span>
@@ -184,7 +215,7 @@ export default {
         </div>
       </div>
     </div>
-    <EmailModal :isVisible="isModalVisible" @onClose="closeModal" />
+    <EmailModal :isVisible="isModalVisible" @close="closeModal" />
   </div>
 </template>
 
