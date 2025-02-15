@@ -51,12 +51,12 @@ export default {
           <img
             src="../../assets/images/logo.jpg"
             alt="Bank of Industry Logo"
-            class="w-[120px] md:w-[120px] h-auto"
+            class="w-[80px] md:w-[120px] h-auto"
           />
 
           <!-- Mobile Invest Button -->
           <button
-            class="md:hidden bg-green-900 text-white px-4 py-2 rounded-full hover:bg-green-800 transition-all duration-300"
+            class="md:hidden bg-green-900 text-[10px] text-white px-4 py-2 rounded-full hover:bg-green-800 transition-all duration-300"
             @click="showModal"
           >
             Invest
