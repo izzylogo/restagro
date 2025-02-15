@@ -146,13 +146,13 @@ export default {
             >Contact</a
           >
 
-          <div class="flex flex-col gap-3 mt-4 w-full">
+          <!-- <div class="flex flex-col gap-3 mt-4 w-full">
             <button
               class="bg-green-900 border border-green-900 text-2xl px-6 py-3 rounded-3xl text-gray-50 w-full hover:bg-green-800 transition-all duration-300 transform hover:scale-105"
             >
               INVEST
             </button>
-          </div>
+          </div> -->
         </div>
       </nav>
 
