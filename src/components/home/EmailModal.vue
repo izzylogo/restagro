@@ -19,10 +19,10 @@
       </button>
 
       <p
-        v-if="message"
+        v-if="responseMessage"
         :class="{ 'success-message': success, 'error-message': !success }"
       >
-        {{ message }}
+        {{ responseMessage }}
       </p>
     </div>
   </div>
@@ -30,24 +30,25 @@
 
 <script setup>
 import { ref } from "vue";
+import emailjs from "@emailjs/browser"; // ✅ Correct import
 
 const props = defineProps(["isVisible"]);
 const emit = defineEmits(["close"]);
 
 const email = ref("");
-const message = ref("");
+const responseMessage = ref("");
 const success = ref(false);
 const isLoading = ref(false);
 
 const closeModal = () => {
   email.value = "";
-  message.value = "";
+  responseMessage.value = "";
   emit("close");
 };
 
 const submitEmail = async () => {
   if (!email.value) {
-    message.value = "Please enter a valid email.";
+    responseMessage.value = "Please enter a valid email.";
     success.value = false;
     return;
   }
@@ -55,23 +56,30 @@ const submitEmail = async () => {
   isLoading.value = true;
 
   try {
-    const response = await fetch("https://formspree.io/f/xpwqyyzq", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: email.value }),
-    });
+    const templateParams = {
+      email: email.value, // Ensure this matches the variable in your EmailJS template
+      message: email.value, // Ensure this matches the variable in your EmailJS template
+    };
 
-    if (response.ok) {
-      message.value = "Email sent successfully!";
+    // ✅ Send email using EmailJS
+    const response = await emailjs.send(
+      "service_kf20zj7", // ✅ Your EmailJS Service ID
+      "template_hfogked", // ✅ Your EmailJS Template ID (same as contact form)
+      templateParams,
+      "BI7EyPTHmZuna1Q8m" // ✅ Your EmailJS Public Key
+    );
+
+    if (response.status === 200) {
+      responseMessage.value = "Email sent successfully!";
       success.value = true;
-      email.value = ""; // Clear input field after successful submission
+      email.value = ""; // ✅ Clear input field after successful submission
     } else {
-      message.value = "Failed to send email. Please try again.";
+      responseMessage.value = "Failed to send email. Please try again.";
       success.value = false;
     }
   } catch (error) {
-    console.error("Error sending email:", error);
-    message.value = "Network error. Try again later.";
+    console.error("❌ Error sending email:", error);
+    responseMessage.value = "Network error. Try again later.";
     success.value = false;
   }
 

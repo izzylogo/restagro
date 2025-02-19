@@ -28,7 +28,10 @@
             required
             class="form-textarea"
           ></textarea>
-          <button type="submit" class="form-button">Send Message</button>
+          <button type="submit" class="form-button">
+            {{ isLoading ? "Sending..." : "Send Message" }}
+          </button>
+          <p v-if="responseMessage" class="response-message">{{ responseMessage }}</p>
         </form>
       </div>
     </div>
@@ -37,21 +40,52 @@
 
 <script setup>
 import { ref } from "vue";
+import emailjs from "@emailjs/browser"; // ✅ Correct Import
 
+// Form fields
 const name = ref("");
 const email = ref("");
 const message = ref("");
+const responseMessage = ref("");
+const isLoading = ref(false);
 
-const submitForm = () => {
-  console.log("Form submitted:", {
-    name: name.value,
-    email: email.value,
-    message: message.value,
-  });
-  // Reset the form fields
-  name.value = "";
-  email.value = "";
-  message.value = "";
+const submitForm = async () => {
+  if (!name.value || !email.value || !message.value) {
+    responseMessage.value = "Please fill in all fields.";
+    return;
+  }
+
+  isLoading.value = true;
+
+  try {
+    const templateParams = {
+      name: name.value,
+      email: email.value,
+      message: message.value,
+    };
+
+    // ✅ Send email using EmailJS
+    const response = await emailjs.send(
+      "service_kf20zj7", // ✅ Your EmailJS Service ID
+      "template_hfogked", // ✅ Your EmailJS Template ID (same as contact form)
+      templateParams,
+      "BI7EyPTHmZuna1Q8m" // ✅ Your EmailJS Public Key
+    );
+
+    if (response.status === 200) {
+      responseMessage.value = "Your message has been sent successfully!";
+      name.value = "";
+      email.value = "";
+      message.value = "";
+    } else {
+      responseMessage.value = "Failed to send the message. Please try again.";
+    }
+  } catch (error) {
+    console.error("❌ Error sending email:", error);
+    responseMessage.value = "Network error. Try again later.";
+  }
+
+  isLoading.value = false;
 };
 </script>
 
@@ -116,5 +150,10 @@ const submitForm = () => {
 
 .form-button:hover {
   background-color: #45a049; /* Darker green on hover */
+}
+
+.response-message {
+  margin-top: 10px;
+  font-weight: bold;
 }
 </style>
