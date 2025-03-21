@@ -31,12 +31,17 @@
           height="20"
           class="text-gray-600 hover:text-green-800 transition-colors duration-300 cursor-pointer md:w-6 md:h-6"
         />
-        <Icon
-          icon="ic:baseline-email"
-          width="20"
-          height="20"
-          class="text-gray-600 hover:text-green-800 transition-colors duration-300 cursor-pointer md:w-6 md:h-6"
-        />
+        <a
+          href="mailto:restagrosolution@gmail.com"
+          class="text-gray-600 hover:text-green-800 transition-colors duration-300"
+        >
+          <Icon
+            icon="ic:baseline-email"
+            width="20"
+            height="20"
+            class="cursor-pointer md:w-6 md:h-6"
+          />
+        </a>
       </div>
 
       <div class="flex gap-4 md:gap-[30px] text-sm md:text-base">
@@ -49,7 +54,7 @@
     <!-- Copyright and Credit Line -->
     <div class="mt-6 pt-4 border-t border-gray-200 text-center text-xs text-gray-600">
       <p class="mb-0.5 text-xs">
-        © {{ currentYear }} Restagro Solutions. All rights reserved.
+        {{ currentYear }} Restagro Solutions. All rights reserved.
       </p>
       <p class="text-gray-500 text-xs">
         Built by

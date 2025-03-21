@@ -7,6 +7,17 @@
           We would love to hear from you! Please fill out the form below, and we will get
           back to you as soon as possible.
         </p>
+        <div class="direct-email-box mb-6 p-4 bg-green-50 rounded-lg text-center">
+          <p class="text-gray-700 mb-2">
+            ✨ Prefer direct communication? Reach out to us at:
+          </p>
+          <a
+            href="mailto:restagrosolution@gmail.com"
+            class="text-green-700 hover:text-green-800 font-medium transition-colors duration-300"
+          >
+            restagrosolution@gmail.com
+          </a>
+        </div>
         <form @submit.prevent="submitForm" class="contact-form">
           <input
             type="text"
