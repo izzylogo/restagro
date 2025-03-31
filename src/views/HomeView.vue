@@ -5,7 +5,7 @@ import { defineAsyncComponent } from 'vue';
 const Hero = defineAsyncComponent(() => import("../components/home/Hero.vue"));
 const About = defineAsyncComponent(() => import("../components/home/About.vue"));
 const Solutions = defineAsyncComponent(() => import("../components/home/Solutions.vue"));
-const HomeFaq = defineAsyncComponent(() => import("../components/home/HomeFaq.vue"));
+// const HomeFaq = defineAsyncComponent(() => import("../components/home/HomeFaq.vue"));
 const Footer = defineAsyncComponent(() => import("../components/home/Footer.vue"));
 const ContactUs = defineAsyncComponent(() => import("../components/home/ContactUs.vue"));
 </script>

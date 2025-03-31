@@ -51,12 +51,12 @@ export default {
           <img
             src="../../assets/images/logo.jpg"
             alt="Bank of Industry Logo"
-            class="w-[80px] md:w-[120px] h-auto"
+            class="w-[80px] md:w-[120px] h-auto animate-on-scroll"
           />
 
           <!-- Mobile Invest Button -->
           <button
-            class="md:hidden bg-green-900 text-[10px] text-white px-4 py-2 rounded-full hover:bg-green-800 transition-all duration-300"
+            class="md:hidden bg-green-900 text-[10px] text-white px-4 py-2 rounded-full hover:bg-green-800 transition-all duration-300 animate-on-scroll"
             @click="showModal"
           >
             Invest
@@ -65,17 +65,17 @@ export default {
           <!-- Desktop Menu -->
           <div class="hidden md:flex gap-5 items-center text-black font-extrabold">
             <a
-              class="nav-links hover:text-green-800 transition-colors duration-300"
+              class="nav-links hover:text-green-800 transition-colors duration-300 animate-on-scroll"
               @click.prevent="scrollToSection('about')"
               >About</a
             >
             <a
-              class="nav-links hover:text-green-800 transition-colors duration-300"
+              class="nav-links hover:text-green-800 transition-colors duration-300 animate-on-scroll"
               @click.prevent="scrollToSection('solutions')"
               >Solutions</a
             >
             <a
-              class="nav-links hover:text-green-800 transition-colors duration-300"
+              class="nav-links hover:text-green-800 transition-colors duration-300 animate-on-scroll"
               @click.prevent="scrollToSection('contact')"
               >Contact</a
             >
@@ -84,7 +84,7 @@ export default {
           <!-- Buttons -->
           <div class="hidden md:flex gap-5 mr-[50px]">
             <button
-              class="bg-green-900 border-[2px] border-green-900 px-[30px] md:px-[40px] py-[12px] rounded-3xl text-gray-50 hover:bg-green-800 transition-all duration-300 transform hover:scale-105"
+              class="bg-green-900 border-[2px] border-green-900 px-[30px] md:px-[40px] py-[12px] rounded-3xl text-gray-50 hover:bg-green-800 transition-all duration-300 transform hover:scale-105 animate-on-scroll"
               @click="showModal"
             >
               Invest
@@ -94,7 +94,7 @@ export default {
           <!-- Mobile Menu Button -->
           <button
             @click="toggleMenu"
-            class="md:hidden block text-black p-2 hover:bg-gray-100 rounded-lg transition-colors duration-300"
+            class="md:hidden block text-black p-2 hover:bg-gray-100 rounded-lg transition-colors duration-300 animate-on-scroll"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -166,28 +166,28 @@ export default {
         <div class="w-full flex items-center">
           <div>
             <div class="content-text mb-8 md:mb-12 relative max-w-[1200px]">
-              <h1 class="leading-[75px] text-white brightness-125 hidden md:block animate-slide-down">
+              <h1 class="leading-[75px] text-white brightness-125 hidden md:block animate-on-scroll">
                 Transforming Agriculture
               </h1>
               <div
                 class="absolute bg-green-800 h-[20px] md:h-[30px] w-[80%] md:w-[450px] bottom-[85px] md:bottom-[55px] rotate-3 animate-slide-right"
               ></div>
-              <h1 class="leading-[75px] text-white brightness-125 hidden md:block mb-4 animate-slide-down-delay-1">
+              <h1 class="leading-[75px] text-white brightness-125 hidden md:block mb-4 animate-on-scroll">
                 Through Innovation
               </h1>
-              <h1 class="leading-[75px] text-white brightness-125 hidden md:block animate-slide-down-delay-2">
+              <h1 class="leading-[75px] text-white brightness-125 hidden md:block animate-on-scroll">
                 And Sustainability
               </h1>
 
               <!-- mobile text -->
               <h1
-                class="md:hidden block text-4xl leading-tight text-white brightness-125 md:mt-8 mt-0 animate-slide-down"
+                class="md:hidden block text-4xl leading-tight text-white brightness-125 md:mt-8 mt-0 animate-on-scroll"
               >
                 Transforming Agriculture Through Innovation And Sustainability
               </h1>
             </div>
 
-            <div class="caption-text mb-12 max-w-[900px] animate-fade-in-up">
+            <div class="caption-text mb-12 max-w-[900px] animate-on-scroll">
               <p
                 class="text-gray-300 font-normal leading-normal tracking-wide text-[40px] md:text-xl"
               >
@@ -198,15 +198,15 @@ export default {
               </p>
             </div>
 
-            <div class="caption-btn flex flex-col sm:flex-row gap-6 mt-8 animate-fade-in-up-delay">
+            <div class="caption-btn flex flex-col sm:flex-row gap-6 mt-8">
               <button
-                class="bg-transparent border-[2px] border-gray-100 px-[35px] md:px-[45px] py-[14px] rounded-3xl text-gray-50 w-full sm:w-auto hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
+                class="bg-transparent border-[2px] border-gray-100 px-[35px] md:px-[45px] py-[14px] rounded-3xl text-gray-50 w-full sm:w-auto hover:bg-white/20 transition-all duration-300 transform hover:scale-105 animate-on-scroll"
               >
                 Get Started
               </button>
               <button
                 @click.prevent="scrollToSection('solutions')"
-                class="bg-green-900 border-[2px] border-gray-100 px-[35px] md:px-[45px] py-[14px] rounded-3xl text-gray-50 w-full sm:w-auto hover:bg-green-800 transition-all duration-300 transform hover:scale-105"
+                class="bg-green-900 border-[2px] border-gray-100 px-[35px] md:px-[45px] py-[14px] rounded-3xl text-gray-50 w-full sm:w-auto hover:bg-green-800 transition-all duration-300 transform hover:scale-105 animate-on-scroll"
               >
                 <span class="text-lg">Our Solutions</span>
               </button>
@@ -361,7 +361,7 @@ export default {
 }
 
 .animate-slide-right {
-  animation: slideRight 1s ease-out 0.6s forwards;
+  animation: slideRight 1.5s cubic-bezier(0.4, 0, 0.2, 1) 1.2s forwards;
   opacity: 0;
 }
 
@@ -415,5 +415,51 @@ export default {
   .caption-text p {
     font-size: 16px;
   }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add staggered delays for nav items */
+nav .animate-on-scroll:nth-child(1) { transition-delay: 0.3s; transform: translateY(-40px);}
+nav .animate-on-scroll:nth-child(2) { transition-delay: 0.5s; }
+nav .animate-on-scroll:nth-child(3) { transition-delay: 0.7s; }
+nav .animate-on-scroll:nth-child(4) { transition-delay: 0.9s; }
+
+/* Add staggered delays for hero content */
+.content-text .animate-on-scroll:nth-child(1) { 
+  transform: translateX(-40px);
+  transition-delay: 1.1s; 
+}
+.content-text .animate-on-scroll:nth-child(2) { 
+  transform: translateX(-40px);
+  transition-delay: 1.3s; 
+}
+.content-text .animate-on-scroll:nth-child(3) { 
+  transform: translateX(-40px);
+  transition-delay: 1.5s; 
+}
+
+.caption-text.animate-on-scroll { 
+  transform: translateY(40px);
+  transition-delay: 1.5s; 
+}
+
+.caption-btn .animate-on-scroll:nth-child(1) { 
+  transform: translateY(40px);
+  transition-delay: 0.3s; 
+}
+
+.caption-btn .animate-on-scroll:nth-child(2) { 
+  transform: translateY(40px);
+  transition-delay: 0.4s; 
 }
 </style>
