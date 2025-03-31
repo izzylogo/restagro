@@ -166,28 +166,28 @@ export default {
         <div class="w-full flex items-center">
           <div>
             <div class="content-text mb-8 md:mb-12 relative max-w-[1200px]">
-              <h1 class="leading-[75px] text-white brightness-125 hidden md:block">
+              <h1 class="leading-[75px] text-white brightness-125 hidden md:block animate-slide-down">
                 Transforming Agriculture
               </h1>
               <div
-                class="absolute bg-green-800 h-[20px] md:h-[30px] w-[80%] md:w-[450px] bottom-[85px] md:bottom-[55px] rotate-3"
+                class="absolute bg-green-800 h-[20px] md:h-[30px] w-[80%] md:w-[450px] bottom-[85px] md:bottom-[55px] rotate-3 animate-slide-right"
               ></div>
-              <h1 class="leading-[75px] text-white brightness-125 hidden md:block mb-4">
+              <h1 class="leading-[75px] text-white brightness-125 hidden md:block mb-4 animate-slide-down-delay-1">
                 Through Innovation
               </h1>
-              <h1 class="leading-[75px] text-white brightness-125 hidden md:block">
+              <h1 class="leading-[75px] text-white brightness-125 hidden md:block animate-slide-down-delay-2">
                 And Sustainability
               </h1>
 
               <!-- mobile text -->
               <h1
-                class="md:hidden block text-4xl leading-tight text-white brightness-125 md:mt-8 mt-0"
+                class="md:hidden block text-4xl leading-tight text-white brightness-125 md:mt-8 mt-0 animate-slide-down"
               >
                 Transforming Agriculture Through Innovation And Sustainability
               </h1>
             </div>
 
-            <div class="caption-text mb-12 max-w-[900px]">
+            <div class="caption-text mb-12 max-w-[900px] animate-fade-in-up">
               <p
                 class="text-gray-300 font-normal leading-normal tracking-wide text-[40px] md:text-xl"
               >
@@ -198,7 +198,7 @@ export default {
               </p>
             </div>
 
-            <div class="caption-btn flex flex-col sm:flex-row gap-6 mt-8">
+            <div class="caption-btn flex flex-col sm:flex-row gap-6 mt-8 animate-fade-in-up-delay">
               <button
                 class="bg-transparent border-[2px] border-gray-100 px-[35px] md:px-[45px] py-[14px] rounded-3xl text-gray-50 w-full sm:w-auto hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
               >
@@ -311,6 +311,68 @@ export default {
 
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-100%) rotate(3deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotate(3deg);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.8s ease-out forwards;
+}
+
+.animate-slide-down-delay-1 {
+  animation: slideDown 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-slide-down-delay-2 {
+  animation: slideDown 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.animate-slide-right {
+  animation: slideRight 1s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out 0.8s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up-delay {
+  animation: fadeInUp 0.8s ease-out 1s forwards;
+  opacity: 0;
 }
 
 @media (max-width: 800px) {

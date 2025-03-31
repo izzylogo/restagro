@@ -1,5 +1,28 @@
 <script setup>
 import backgroundImage from "@/assets/images/background (1).jpg";
+
+const partnerItems = [
+  {
+    title: "Proven Track Record",
+    description: "Successfully partnered with established farmhouses, achieving over 60% yield growth in less than 4 months of implementation.",
+    icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+  },
+  {
+    title: "Sustainable Practices",
+    description: "Committed to environmentally friendly farming methods that align with global sustainability goals.",
+    icon: "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+  },
+  {
+    title: "Expert Team",
+    description: "Our team comprises industry experts with 15+ years of experience in the agro-sector.",
+    icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+  },
+  {
+    title: "Scalable Model",
+    description: "Business model designed for rapid scalability, ensuring high returns on investment within 24 months.",
+    icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+  }
+];
 </script>
 
 <template>
@@ -20,14 +43,12 @@ import backgroundImage from "@/assets/images/background (1).jpg";
       <!-- Solutions Section -->
       <div class="mb-20">
         <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Solutions</h2>
-          <div class="h-1 w-20 bg-green-400 mx-auto"></div>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 animate-on-scroll">Our Solutions</h2>
+          <div class="h-1 w-20 bg-green-400 mx-auto animate-on-scroll"></div>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
-          <div
-            class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-white/20"
-          >
+          <div class="solution-card animate-on-scroll">
             <div class="text-green-400 mb-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -51,9 +72,7 @@ import backgroundImage from "@/assets/images/background (1).jpg";
             </p>
           </div>
 
-          <div
-            class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-white/20"
-          >
+          <div class="solution-card animate-on-scroll">
             <div class="text-green-400 mb-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -77,9 +96,7 @@ import backgroundImage from "@/assets/images/background (1).jpg";
             </p>
           </div>
 
-          <div
-            class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-white/20"
-          >
+          <div class="solution-card animate-on-scroll">
             <div class="text-green-400 mb-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -108,15 +125,15 @@ import backgroundImage from "@/assets/images/background (1).jpg";
       <!-- Why Partner With Us Section -->
       <div class="mt-20">
         <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-            Why Partner With Us?
-          </h2>
-          <div class="h-1 w-20 bg-green-400 mx-auto"></div>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 animate-on-scroll">Why Partner With Us?</h2>
+          <div class="h-1 w-20 bg-green-400 mx-auto animate-on-scroll"></div>
         </div>
 
         <div class="grid md:grid-cols-2 gap-8">
           <div
-            class="bg-white/10 backdrop-blur-sm p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-white/20"
+            v-for="(item, index) in partnerItems"
+            :key="index"
+            class="partner-card animate-on-scroll"
           >
             <div class="flex gap-4 items-start">
               <div class="bg-green-400/20 p-3 rounded-lg">
@@ -131,108 +148,13 @@ import backgroundImage from "@/assets/images/background (1).jpg";
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    :d="item.icon"
                   />
                 </svg>
               </div>
               <div>
-                <h3 class="text-xl font-semibold mb-2 text-white">Proven Track Record</h3>
-                <p class="text-gray-200">
-                  Successfully partnered with established farmhouses, achieving over 60%
-                  yield growth in less than 4 months of implementation.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="bg-white/10 backdrop-blur-sm p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-white/20"
-          >
-            <div class="flex gap-4 items-start">
-              <div class="bg-green-400/20 p-3 rounded-lg">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 text-green-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                  />
-                </svg>
-              </div>
-              <div>
-                <h3 class="text-xl font-semibold mb-2 text-white">
-                  Sustainable Practices
-                </h3>
-                <p class="text-gray-200">
-                  Committed to environmentally friendly farming methods that align with
-                  global sustainability goals.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="bg-white/10 backdrop-blur-sm p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-white/20"
-          >
-            <div class="flex gap-4 items-start">
-              <div class="bg-green-400/20 p-3 rounded-lg">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 text-green-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-              </div>
-              <div>
-                <h3 class="text-xl font-semibold mb-2 text-white">Expert Team</h3>
-                <p class="text-gray-200">
-                  Our team comprises industry experts with 15+ years of experience in the
-                  agro-sector.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="bg-white/10 backdrop-blur-sm p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-white/20"
-          >
-            <div class="flex gap-4 items-start">
-              <div class="bg-green-400/20 p-3 rounded-lg">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 text-green-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                  />
-                </svg>
-              </div>
-              <div>
-                <h3 class="text-xl font-semibold mb-2 text-white">Scalable Model</h3>
-                <p class="text-gray-200">
-                  Business model designed for rapid scalability, ensuring high returns on
-                  investment within 24 months.
-                </p>
+                <h3 class="text-xl font-semibold mb-2 text-white">{{ item.title }}</h3>
+                <p class="text-gray-200">{{ item.description }}</p>
               </div>
             </div>
           </div>
@@ -241,3 +163,109 @@ import backgroundImage from "@/assets/images/background (1).jpg";
     </div>
   </section>
 </template>
+
+<style scoped>
+/* Base card styles */
+.solution-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(20px);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.solution-card::before {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(34, 197, 94, 0.1),
+    rgba(34, 197, 94, 0.2)
+  );
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+  border-radius: 1rem;
+}
+
+.solution-card::after {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(34, 197, 94, 0.1)
+  );
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+  border-radius: 1rem;
+}
+
+.solution-card:hover::before {
+  left: 0;
+}
+
+.solution-card:hover::after {
+  left: 0;
+  transition-delay: 0.2s;
+}
+
+.solution-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.2);
+  border-color: rgba(34, 197, 94, 0.4);
+}
+
+.solution-card:hover .text-green-400 {
+  transform: scale(1.1) rotate(5deg);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.partner-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.partner-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Animation for scroll reveal */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Remove previous animation classes as they're no longer needed */
+</style>

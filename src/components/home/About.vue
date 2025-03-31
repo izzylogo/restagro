@@ -4,31 +4,31 @@
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <!-- Image Column -->
         <div class="relative">
-          <div class="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden">
+          <div class="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden animate-scale-in">
             <img
               src="../../assets/images/background (4).jpg"
               alt="Sustainable Farming"
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
             />
           </div>
-          <div class="absolute -bottom-6 -right-6 bg-green-800 p-6 rounded-xl text-white">
-            <div class="text-4xl font-bold mb-1">80%</div>
+          <div class="absolute -bottom-6 -right-6 bg-green-800 p-6 rounded-xl text-white animate-slide-up">
+            <div class="text-4xl font-bold mb-1 animate-count-up" data-target="80">0</div>
             <div class="text-sm">Profit Growth</div>
           </div>
         </div>
 
         <!-- Content Column -->
         <div class="space-y-6">
-          <div class="inline-block">
+          <div class="inline-block animate-slide-right">
             <h2 class="text-green-800 font-semibold mb-2">ABOUT RESTAGRO</h2>
             <div class="h-1 w-20 bg-green-800"></div>
           </div>
 
-          <h3 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+          <h3 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight animate-fade-in">
             Pioneering Sustainable Agriculture for a Better Tomorrow
           </h3>
 
-          <p class="text-gray-600 leading-relaxed">
+          <p class="text-gray-600 leading-relaxed animate-fade-in">
             RESTAGRO SOLUTIONS is more than just an agricultural company – we're a
             catalyst for transformation in the farming sector. Our journey began with a
             simple yet powerful vision: to revolutionize agriculture through innovation
@@ -36,7 +36,7 @@
           </p>
 
           <div class="space-y-4">
-            <div class="flex items-start gap-4">
+            <div class="flex items-start gap-4 animate-slide-up-stagger-1">
               <div class="p-2 bg-green-100 rounded-lg mt-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +62,7 @@
               </div>
             </div>
 
-            <div class="flex items-start gap-4">
+            <div class="flex items-start gap-4 animate-slide-up-stagger-2">
               <div class="p-2 bg-green-100 rounded-lg mt-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +88,7 @@
               </div>
             </div>
 
-            <div class="flex items-start gap-4">
+            <div class="flex items-start gap-4 animate-slide-up-stagger-3">
               <div class="p-2 bg-green-100 rounded-lg mt-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +116,7 @@
           </div>
 
           <button
-            class="mt-8 bg-green-800 text-white px-8 py-3 rounded-full hover:bg-green-700 transition-colors duration-300 inline-flex items-center gap-2"
+            class="mt-8 bg-green-800 text-white px-8 py-3 rounded-full hover:bg-green-700 transition-all duration-300 inline-flex items-center gap-2 animate-bounce-in"
           >
             Learn More
             <svg
@@ -137,3 +137,26 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import { onMounted } from 'vue';
+
+onMounted(() => {
+  // Counter animation will be handled by App.vue's global animation system
+});
+</script>
+
+<style scoped>
+/* Remove duplicate keyframes and animation classes since they're now handled by App.vue */
+
+/* Custom transitions for hover effects */
+.hover\:scale-110:hover {
+  transform: scale(1.1);
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover\:bg-green-700:hover {
+  background-color: rgb(21 128 61);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+</style>
