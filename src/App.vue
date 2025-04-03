@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import Loader from './components/ui/Loader.vue'
 import { onMounted, ref } from 'vue'
+import LiveChat from './components/ui/LiveChat.vue'
 
 const isLoaded = ref(false);
 
@@ -74,6 +75,7 @@ function startCounterAnimation(element) {
 <template>
   <Loader v-if="!isLoaded" />
   <RouterView v-show="isLoaded" :class="{ 'fade-in': isLoaded }" />
+  <LiveChat />
 </template>
 
 <style>

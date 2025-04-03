@@ -12,7 +12,10 @@
             />
           </div>
           <div class="absolute -bottom-6 -right-6 bg-green-800 p-6 rounded-xl text-white animate-slide-up">
-            <div class="text-4xl font-bold mb-1 animate-count-up" data-target="80">0</div>
+            <div class="flex items-center gap-2">
+              <span class="text-4xl font-bold mb-1 animate-count-up" data-target="80">0</span>
+              <span class="text-3xl font-bold">%</span>
+            </div>
             <div class="text-sm">Profit Growth</div>
           </div>
         </div>
