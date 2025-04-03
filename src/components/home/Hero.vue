@@ -51,7 +51,7 @@ export default {
           <img
             src="../../assets/images/logo.jpg"
             alt="Bank of Industry Logo"
-            class="w-[80px] md:w-[120px] h-auto animate-on-scroll"
+            class="w-[80px] md:w-[120px] h-auto "
           />
 
           <!-- Mobile Invest Button -->
@@ -113,7 +113,7 @@ export default {
         <!-- Mobile Menu -->
         <div
           v-if="isMenuOpen"
-          class="md:hidden fixed left-0 top-0 h-screen w-full flex flex-col items-left bg-white p-8 pt-[70px] text-black animate-fadeIn"
+          class="md:hidden fixed left-0 top-0 h-screen w-full flex flex-col items-left bg-white p-8 pt-[70px] text-black"
         >
           <div
             @click="toggleMenu"
@@ -310,7 +310,7 @@ export default {
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.3s ease-in-out;
+  /* animation: fadeIn 0.3s ease-in-out; */
 }
 
 @keyframes slideDown {
