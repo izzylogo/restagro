@@ -5,6 +5,7 @@ import { defineAsyncComponent } from 'vue';
 const Hero = defineAsyncComponent(() => import("../components/home/Hero.vue"));
 const About = defineAsyncComponent(() => import("../components/home/About.vue"));
 const Solutions = defineAsyncComponent(() => import("../components/home/Solutions.vue"));
+const CEO = defineAsyncComponent(() => import("../components/home/CEO.vue"));
 // const HomeFaq = defineAsyncComponent(() => import("../components/home/HomeFaq.vue"));
 const Footer = defineAsyncComponent(() => import("../components/home/Footer.vue"));
 const ContactUs = defineAsyncComponent(() => import("../components/home/ContactUs.vue"));
@@ -15,6 +16,9 @@ const ContactUs = defineAsyncComponent(() => import("../components/home/ContactU
     <Hero />
     <section id="about" class="animate-on-scroll">
       <About />
+    </section>
+    <section id="ceo" class="animate-on-scroll">
+      <CEO />
     </section>
     <section id="solutions" class="animate-on-scroll">
       <Solutions />
