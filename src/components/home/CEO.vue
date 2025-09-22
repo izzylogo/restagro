@@ -9,7 +9,7 @@
         </div>
 
         <div class="flex justify-center lg:justify-end order-1 lg:order-2">
-          <div class="relative w-48 h-48 lg:w-56 lg:h-56 rounded-xl overflow-hidden shadow-lg bg-gray-100">
+          <div class="relative w-54 h-54 lg:w-66 lg:h-66 rounded-xl overflow-hidden shadow-lg bg-gray-100">
             <img src="@/assets/man.jpg" alt="CEO David Udofia Udeme" class="w-full h-full object-cover" />
           </div>
         </div>
