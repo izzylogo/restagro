@@ -10,9 +10,9 @@
 
         <div class="flex justify-center lg:justify-end order-1 lg:order-2">
           <!-- center the image and constrain its max width, increase size on larger screens -->
-          <div class="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-xl overflow-hidden shadow-lg bg-gray-100 max-w-xs sm:max-w-sm md:max-w-md">
+          <div class="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-xl overflow-hidden shadow-lg bg-gray-100 max-w-full md:max-w-[75%]">
             <img src="@/assets/man.jpg" alt="CEO David Udofia Udeme" class="w-full h-full object-cover" />
-          </div>
+        </div>
         </div>
       </div>
     </div>
